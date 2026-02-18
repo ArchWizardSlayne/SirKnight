@@ -1,0 +1,64 @@
+[gd_scene load_steps=10 format=3 uid="uid://ha625f4i8wec"]
+
+[ext_resource type="PackedScene" uid="uid://cxnlg5163rr8p" path="res://scenes/killzone.tscn" id="1_fiu5q"]
+[ext_resource type="Texture2D" uid="uid://c66dfx8f87d0e" path="res://assets/sprites/FLYING.png" id="2_sy2fh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kiu1n"]
+radius = 25.019993
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bblhs"]
+radius = 7.2135353
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1dgx0"]
+atlas = ExtResource("2_sy2fh")
+region = Rect2(0, 0, 81, 71)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kkvs7"]
+atlas = ExtResource("2_sy2fh")
+region = Rect2(81, 0, 81, 71)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idwbx"]
+atlas = ExtResource("2_sy2fh")
+region = Rect2(162, 0, 81, 71)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c0f6h"]
+atlas = ExtResource("2_sy2fh")
+region = Rect2(243, 0, 81, 71)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j88qe"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1dgx0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kkvs7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_idwbx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c0f6h")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[node name="Flying_demon" type="Node2D"]
+
+[node name="Killzone" parent="." instance=ExtResource("1_fiu5q")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(-10, 2)
+shape = SubResource("CircleShape2D_kiu1n")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(17, 19)
+rotation = -1.8186331
+shape = SubResource("CapsuleShape2D_bblhs")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_j88qe")
+autoplay = "default"
+frame_progress = 0.531014
